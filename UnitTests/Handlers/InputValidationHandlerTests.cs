@@ -4,7 +4,7 @@ using CurrencyConverter.Interfaces;
 using CurrencyConverter.Models;
 using FluentAssertions;
 using NSubstitute;
-using NSubstitute.ReceivedExceptions;
+using NSubstitute.ReceivedExtensions;
 
 namespace UnitTests.Handlers;
 
@@ -47,48 +47,48 @@ public class InputValidationHandlerTests
     [Fact]
     public void Handle_ShouldThrowException_WhenInputArgumentIsNotValid()
     {
-        var exception = new Exception("error);
+        var exception = new Exception("error");
 
         _validator
-            .When(x => x.ValidateInputArgumentCount(_inputContext.UserInput)
-            .Throw(exception);
+            .When(x => x.ValidateInputArgumentCount(_inputContext.UserInput))
+            .Throw(Exception);
 
         _handler
             .Invoking(x => x.Handle(_inputContext))
             .Should()
-            .Throw<exception>()
+            .Throw<Exception>()
             .WithMessage("error");
     }
 
     [Fact]
     public void Handle_ShouldThrowException_WhenCurrencyPairArgumentIdNotValid()
     {
-        var exception = new Exception("error);
+        var exception = new Exception("error");
 
         _validator
-            .When(x => x.ValidateCurrencyPairFormat(Arg.Any<string>());
-            .Throw(exception);
+            .When(x => x.ValidateCurrencyPairFormat(Arg.Any<string>()))
+            .Throw(Exception);
 
         _handler
             .Invoking(x => x.Handle(_inputContext))
             .Should()
-            .Throw<exception>()
+            .Throw<Exception>()
             .WithMessage("error");
     }
 
     [Fact]
     public void Handle_ShouldThrowException_WhenAmkuntArgumentIsNotValid()
     {
-        var exception = new Exception("error);
+        var exception = new Exception("error");
 
         _validator
-            .When(x => x.ValidateAmount(Arg.Any<string>());
-            .Throw(exception);
+            .When(x => x.ValidateAmount(Arg.Any<string>())
+            .Throw<Exception>();
 
         _handler
             .Invoking(x => x.Handle(_inputContext))
             .Should()
-            .Throw<exception>()
+            .Throw<Exception>()
             .WithMessage("error");
     }
 }
