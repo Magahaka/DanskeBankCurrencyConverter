@@ -74,7 +74,7 @@ public class InputOrchestratorTests
     }
 
     [Fact]
-    public void Handle_ShouldThrowException_WhenainputParseafails()
+    public void Handle_ShouldThrowException_WhenInputParserFails()
     {
         var exception = new ArgumentException("exception");
 
@@ -91,7 +91,7 @@ public class InputOrchestratorTests
     }
 
     [Fact]
-    public void Handle_WhenCurrencyConverterFails_ShouldThrow()
+    public void Handle_ShouldThrowException_WhenCurrencyConverterFaild()
     {
         _inputValidationHandler
             .Handle(_inputContext)
