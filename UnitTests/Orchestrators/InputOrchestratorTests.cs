@@ -35,7 +35,7 @@ public class InputOrchestratorTests
     }
 
     [Fact]
-    public void Handle_Always_SetsUpChainOfResponsibility()
+    public void Handle_ShouldCallEachHandler()
     {
         var result = _orchestrator.Handle(_inputContext);
 
@@ -57,7 +57,7 @@ public class InputOrchestratorTests
     }
 
     [Fact]
-    public void Handle_WhenInputValidationFails_ShouldThrow()
+    public void Handle_ShouldThrowException_WhenInputValidationFails()
     {
         var exception = new ArgumentException("exception");
 
@@ -74,14 +74,14 @@ public class InputOrchestratorTests
     }
 
     [Fact]
-    public void Handle_WhenInputParserFails_ShouldThrow()
+    public void Handle_ShouldThrowException_WhenainputParseafails()
     {
         var exception = new ArgumentException("exception");
 
         _inputParserHandler
             .Handle(_inputContext)
             .Throws(exception);
-
+        
         var result = () => _orchestrator.Handle(_inputContext);
 
         result
