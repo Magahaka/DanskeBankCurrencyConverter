@@ -61,7 +61,7 @@ public class InputValidationHandlerTests
     }
 
     [Fact]
-    public void Handle_ShouldThrowException_WhenCurrencyPairArgumentIdNotValid()
+    public void Handle_ShouldThrowException_WhenCurrencyPairArgumentIsNotValid()
     {
         var exception = new Exception("error");
 
