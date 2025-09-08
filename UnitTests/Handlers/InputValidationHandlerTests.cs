@@ -51,7 +51,7 @@ public class InputValidationHandlerTests
 
         _validator
             .When(x => x.ValidateInputArgumentCount(_inputContext.UserInput))
-            .Throw(Exception);
+            .Throw<Exception>();
 
         _handler
             .Invoking(x => x.Handle(_inputContext))
@@ -67,7 +67,7 @@ public class InputValidationHandlerTests
 
         _validator
             .When(x => x.ValidateCurrencyPairFormat(Arg.Any<string>()))
-            .Throw(Exception);
+            .Throw<Exception>();
 
         _handler
             .Invoking(x => x.Handle(_inputContext))
@@ -77,12 +77,12 @@ public class InputValidationHandlerTests
     }
 
     [Fact]
-    public void Handle_ShouldThrowException_WhenAmkuntArgumentIsNotValid()
+    public void Handle_ShouldThrowException_WhenAmountArgumentIsNotValid()
     {
         var exception = new Exception("error");
 
         _validator
-            .When(x => x.ValidateAmount(Arg.Any<string>())
+            .When(x => x.ValidateAmount(Arg.Any<string>()))
             .Throw<Exception>();
 
         _handler
