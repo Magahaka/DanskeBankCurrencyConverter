@@ -72,7 +72,7 @@ public class InputValidationHandlerTests
         _handler
             .Invoking(x => x.Handle(_inputContext))
             .Should()
-            .Throw<Exception>()
+            .Throw(exception)
             .WithMessage("error");
     }
 
@@ -83,7 +83,7 @@ public class InputValidationHandlerTests
 
         _validator
             .When(x => x.ValidateAmount(Arg.Any<string>()))
-            .Throw<Exception>();
+            .Throw(exception);
 
         _handler
             .Invoking(x => x.Handle(_inputContext))
