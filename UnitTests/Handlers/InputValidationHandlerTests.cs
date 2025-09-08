@@ -67,12 +67,12 @@ public class InputValidationHandlerTests
 
         _validator
             .When(x => x.ValidateCurrencyPairFormat(Arg.Any<string>()))
-            .Throw<Exception>();
+            .Throw(exception);
 
         _handler
             .Invoking(x => x.Handle(_inputContext))
             .Should()
-            .Throw(exception)
+            .Throw<Exception>()
             .WithMessage("error");
     }
 
