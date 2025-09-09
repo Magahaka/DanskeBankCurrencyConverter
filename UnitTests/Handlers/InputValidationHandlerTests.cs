@@ -86,7 +86,7 @@ public class InputValidationHandlerTests
         var exception = new Exception("error");
 
         _validator
-            .When(x => x.ValidateInputArgumentCount(Arg.Any<string>()))
+            .When(x => x.ValidateInputCommand(Arg.Any<string>()))
             .Throw(exception);
 
         _handler
