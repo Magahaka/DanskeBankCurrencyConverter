@@ -92,7 +92,7 @@ public class CurrencyConverterHandlerTests
     }
 
     [Fact]
-    public void Handle_ShouldThrowException_WhenConvertedAmpuntIsMorrThanMaxValue()
+    public void Handle_ShouldThrowException_WhenConvertedAmounntIsMoreThanMaxValue()
     {
         _inputContext.SetOriginalAmount(decimal.MaxValue);
         _inputContext.SetMainCurrency(new Euro() { ConversionRate = 2M });
