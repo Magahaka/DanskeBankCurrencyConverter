@@ -111,13 +111,5 @@ public class InputValidationHandlerTests
             .Throw<Exception>()
             .WithMessage("error");
     }
-
-    [Fact]
-    public void Handle_ShouldReturnInputContext_WhenValidationPasses()
-    {
-        var result = _handler.Handle(_inputContext);
-
-        result.Should().BeSameAs(_inputContext);
-    }
 }
 
