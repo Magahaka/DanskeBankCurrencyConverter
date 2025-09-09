@@ -25,23 +25,27 @@ public class InputValidationHandlerTests
     [Fact]
     public void Handle_ShouldCallValidators()
     {
+        var arguments = _inputContext.UserInput
+            .Split()
+            .ToList();
+        
         _handler.Handle(_inputContext);
 
         _validator
             .Received(1)
-            .ValidateInputArgumentCount("Exchange EUR/USD 1");
+            .ValidateInputArgumentCount(_inputContext.UserInput);
 
         _validator
             .Received(1)
-            .ValidateInputCommand("Exchange");
+            .ValidateInputCommand(arguments[0]);
 
         _validator
             .Received(1)
-            .ValidateCurrencyPairFormat("EUR/USD");
+            .ValidateCurrencyPairFormat(arguments[1]);
 
         _validator
             .Received(1)
-            .ValidateAmount("1");
+            .ValidateAmount(arguments[2]);
     }
 
     [Fact]
