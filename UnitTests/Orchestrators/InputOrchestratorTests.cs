@@ -91,16 +91,8 @@ public class InputOrchestratorTests
     }
 
     [Fact]
-    public void Handle_ShouldThrowException_WhenCurrencyConverterFaild()
+    public void Handle_ShouldThrowException_WhenCurrencyConverterFails()
     {
-        _inputValidationHandler
-            .Handle(_inputContext)
-            .Returns(x => _inputParserHandler.Handle(_inputContext));
-
-        _inputParserHandler
-            .Handle(_inputContext)
-            .Returns(x => _currencyConverterHandler.Handle(_inputContext));
-
         var exception = new ArgumentException("exception");
 
         _currencyConverterHandler
